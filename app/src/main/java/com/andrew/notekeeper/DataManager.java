@@ -8,22 +8,22 @@ import java.util.List;
  */
 
 public class DataManager {
-    private static DataManager ourInstance = null;
+    private static DataManager INSTANCE = null;
 
     private List<CourseInfo> mCourses = new ArrayList<>();
     private List<NoteInfo> mNotes = new ArrayList<>();
 
     public static DataManager getInstance() {
-        if(ourInstance == null) {
-            ourInstance = new DataManager();
-            ourInstance.initializeCourses();
-            ourInstance.initializeExampleNotes();
+        if(INSTANCE == null) {
+            INSTANCE = new DataManager();
+            INSTANCE.initializeCourses();
+            INSTANCE.initializeExampleNotes();
         }
-        return ourInstance;
+        return INSTANCE;
     }
 
     public String getCurrentUserName() {
-        return "Andrew";
+        return "andrew";
     }
 
     public String getCurrentUserEmail() {
