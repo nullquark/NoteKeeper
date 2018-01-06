@@ -14,7 +14,7 @@ public class DataManager {
     private List<NoteInfo> mNotes = new ArrayList<>();
 
     public static DataManager getInstance() {
-        if(INSTANCE == null) {
+        if (INSTANCE == null) {
             INSTANCE = new DataManager();
             INSTANCE.initializeCourses();
             INSTANCE.initializeExampleNotes();
@@ -38,6 +38,17 @@ public class DataManager {
         NoteInfo note = new NoteInfo(null, null, null);
         mNotes.add(note);
         return mNotes.size() - 1;
+    }
+
+    public int createNewNote(CourseInfo course, String noteTitle, String noteText) {
+        int index = createNewNote();
+        NoteInfo note = getNotes().get(index);
+
+        note.setCourse(course);
+        note.setTitle(noteTitle);
+        note.setText(noteText);
+
+        return index;
     }
 
     public int findNote(NoteInfo note) {
@@ -70,8 +81,8 @@ public class DataManager {
 
     public List<NoteInfo> getNotes(CourseInfo course) {
         ArrayList<NoteInfo> notes = new ArrayList<>();
-        for(NoteInfo note:mNotes) {
-            if(course.equals(note.getCourse())) {
+        for (NoteInfo note : mNotes) {
+            if (course.equals(note.getCourse())) {
                 notes.add(note);
             }
         }
@@ -81,8 +92,8 @@ public class DataManager {
 
     public int getNoteCount(CourseInfo course) {
         int count = 0;
-        for(NoteInfo note:mNotes) {
-            if(course.equals(note.getCourse())) {
+        for (NoteInfo note : mNotes) {
+            if (course.equals(note.getCourse())) {
                 count++;
             }
         }
